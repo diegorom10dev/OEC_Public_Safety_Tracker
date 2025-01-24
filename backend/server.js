@@ -135,6 +135,24 @@ app.get("/getreportsbylocation/", function (req, res) {
 });
 
 
+// Gets all disasters by disaster type
+// Example - Request data: {"type": "tornado"} - Response data: ["213" "1231", "2321"]
+app.get("/getdisastersbytype/", function (req, res) {
+    var requestData = req.body;
+    res.set("Content-Type", "application/json");
+
+    var rows = getRows("./databases/main.db", "disasters", {"type": requestData["type"]});
+
+    var output = [];
+    for (var i = 0; i < rows.length; i++) {
+        output.push(rows[i]["disasterid"]);
+    }
+
+    res.write(JSON.stringify(output));
+    res.send();
+});
+
+
 // Creates a new disaster with provided name and type
 // Example - Request data: {"name": "Test Disaster", "type": "tornado"} - Response data: {"disasterid": "237362"}
 app.get("/createdisaster/", function (req, res) {
