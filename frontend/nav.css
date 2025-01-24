@@ -19,7 +19,7 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 10px;
-    background-color: #1a455cca;
+    background-color:  #2c3e50a3;
 }
   
 #menuBtn {
@@ -56,7 +56,7 @@ button:hover {
 #sidebar {
     display: none;
     position: fixed;
-    top: 60px;
+    top: 82px;
     left: 0;
     width: 250px;
     height: 100%;
