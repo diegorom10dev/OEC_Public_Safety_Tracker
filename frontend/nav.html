@@ -5,7 +5,52 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Disaster Reporting</title>
   <link rel="stylesheet" type="text/css" href="nav.css" />
+
+  <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC54tLb1M09pHAHqUPx8VaVoQyxsByM5WM&libraries=places,geometry,marker&callback=initMap"
+      async
+      defer
+    ></script>
+
   <script>
+    var map;
+
+    function initMap() {
+      console.log("Initializing map...");
+      const center = { lat: 43.26254101043644, lng: -79.92136878766863 };
+
+      map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 13,
+        center: center,
+        disableDefaultUI: false,
+        draggable: true,
+        streetViewControl: false,
+        mapTypeControl: true,
+        zoomControl: true,
+        scrollwheel: true,
+        gestureHandling: "greedy",
+      });
+
+      console.log("Map initialized.");
+
+      drawDot(43.26254101043644, -79.92136878766863, "#FF0000");
+    }
+
+    function drawDot(lat, lng, color, size) {
+      const location = [
+        { lat: lat, lng: lng },
+        { lat: lat, lng: lng }
+      ];
+      const dot = new google.maps.Polyline({
+        path: location,
+        geodesic: true,
+        strokeColor: color,
+        strokeOpacity: 1.0,
+        strokeWeight: size,
+      });
+    }
+
+
     function openSidebar() {
       document.getElementById("sidebar").style.display = "flex";
       document.getElementById("menuBtn").setAttribute("onclick", "closeSidebar()");
@@ -115,6 +160,9 @@
       </li>
       <li><a href="graphing.html" id="stats-link">Graphing</a></li>
     </ul>
+  </div>
+  <div id="map">
+
   </div>
  <!-- <footer>
     <div class="footer-content">
