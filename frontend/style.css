@@ -1,0 +1,11 @@
+.container{
+ width: 50%;
+}
+#innerDiv {
+width: 50%;
+}
+.centering{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+}
