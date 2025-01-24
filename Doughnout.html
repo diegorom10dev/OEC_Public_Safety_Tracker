@@ -1,0 +1,36 @@
+<div>
+    <canvas id="myChart"></canvas>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  
+  <script>
+    const ctx = document.getElementById('myChart');
+    new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+      labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+      datasets: [{
+        label: '# of Votes',
+        data: [12, 19, 3, 5, 2, 3],
+        borderWidth: 1,
+        backgroundColor: [
+            'rgb(182, 242, 154)',
+            'rgb(54, 162, 235)',
+            'rgb(255, 205, 86)',
+            'rgb(255, 99, 132)',
+            'rgb(229, 242, 154)',
+            'rgb(231, 155, 242)'
+        ],
+        hoverOffset: 4
+      }]
+    },
+    /*options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }*/
+  });
+</script>

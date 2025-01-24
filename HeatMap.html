@@ -1,0 +1,51 @@
+<div>
+    <canvas id="myChart"></canvas>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  
+  <script>
+    const ctx = document.getElementById('myChart');
+    new Chart(ctx, {
+    type: 'radar',
+    data: {
+      labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+      datasets: [{
+        label: 'Region1',
+        data: [12, 19, 3, 5, 2, 3],
+        fill: true,
+        borderColor: [
+            'rgb(185, 242, 155)'
+        ],
+        backgroundColor: 'rgb(203, 240, 183)',
+        pointBackgroundColor: 'rgb(203, 240, 183)',
+        pointBorderColor: 'rgb(185, 242, 155)',
+        pointHoverBackgroundColor: '#fff',
+        pointHoverBorderColor: '185, 242, 155',
+        hoverOffset: 4,
+      },
+      {
+        label: 'Region2',
+        data: [15, 12, 7, 15, 12, 6],
+        fill: true,
+        borderColor: [
+            'rgb(235, 99, 141)'
+        ],
+        backgroundColor: 'rgb(240, 184, 201)',
+        pointBackgroundColor: 'rgb(240, 184, 201)',
+        pointBorderColor: 'rgb(235, 99, 141)',
+        pointHoverBackgroundColor: '#fff',
+        pointHoverBorderColor: '240, 184, 201',
+        hoverOffset: 4,
+      }
+    ]
+    },
+    options: {
+      elements: {
+        line:{
+            borderWidth: 3
+        }
+      }
+    }
+  });
+</script>
