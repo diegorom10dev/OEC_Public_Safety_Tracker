@@ -166,11 +166,14 @@ app.get("/createdisaster/", function (req, res) {
         else {
             var disasterid = buffer.toString("hex");
             insertInto("./databases/main.db", "disasters", {"disasterid": disasterid, "name": requestData["name"], "type": requestData["type"]});
-            res.write(disasterid);
+            var response = JSON.stringify({"disasterid": disasterid});
+            console.log(response);
+            res.write(response);
         }
+        res.send();
     });
 
-    res.send();
+    
 });
 
 // Creates a new report with provided disasterid, level, time, lat, and lng
@@ -186,11 +189,10 @@ app.get("/createreport/", function (req, res) {
         else {
             var reportid = buffer.toString("hex");
             insertInto("./databases/main.db", "reports", {"reportid": reportid, "disasterid": requestData["disasterid"], "level": requestData["level"], "time": requestData["time"], "lat": requestData["lat"], "lng": requestData["lng"]});
-            res.write(reportid);
+            res.write(JSON.stringify({"reportid": reportid}));
         }
+        res.send();
     });
-
-    res.send();
 });
 
 app.listen(port, function() {
