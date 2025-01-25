@@ -136,3 +136,31 @@ button:hover {
     height: 100vh;
     width: 100%;
 }
+.graphMenu{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; 
+
+}
+.btgraphMenu button{
+    display: block;
+    margin: 15px 0; 
+    padding: 15px 30px;
+    font-size: 20px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    width: 250px;
+}
+.btgraphMenu{
+    text-align: center;
+    padding: 30px; 
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    background-color: #f4f4f4;
+    font-size: 18px;
+    background-color: #4086efa5;
+}
