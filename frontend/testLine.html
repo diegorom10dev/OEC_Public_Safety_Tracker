@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Disaster Reporting</title>
+  <link rel="stylesheet" type="text/css" href="style.css" />
+<!-- header the one on top with the menu and logo and name  -->
+<div class="header">
+
+
+  <svg
+    onclick="openSidebar()"
+    id="menuBtn"
+    xmlns="http://www.w3.org/2000/svg"
+    height="30"
+    viewBox="0 -960 960 960"
+    width="30"
+    fill="white"
+  >
+    <path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z" />
+  </svg>
+
+
+  <div style="display: flex; align-items: center;">
+    <a href="./index.html">
+        <img src="./asset/logo.png" alt="" width="50px" height="50px" id="logo">
+    </a>
+    <a href="./index.html" style="text-decoration: none; color: inherit;">
+        <h1 id="bordered">Dis<i>Track</i></h1>
+    </a>
+  </div>
+  <div></div>
+</div>
+
+<!-- sidebar of the menu report and graphing   -->
+<div id="sidebar">
+  <ul>
+    <li><a href="#" id="report-link" onclick="toggleReportMenu()">Report</a>
+      <ul id="report-menu" style="display: none;">
+        <li><a href="#" onclick="toggleCategory('natural-disasters')">Natural Disasters</a>
+          <ul id="natural-disasters" style="display: none;">
+            <li><a href="#" id="earthquake" onclick="showIntensity('earthquake')">Earthquake</a></li>
+            <li><a href="#" id="flood" onclick="showIntensity('flood')">Flood</a></li>
+            <li><a href="#" id="forest-fire" onclick="showIntensity('forest-fire')">Forest Fire</a></li>
+            <li><a href="#" id="hurricane" onclick="showIntensity('hurricane')">Hurricane</a></li>
+            <li><a href="#" id="tornado" onclick="showIntensity('tornado')">Tornado</a></li>
+            <li><a href="#" id="landslide" onclick="showIntensity('landslide')">Landslide</a></li>
+          </ul>
+        </li>
+        <li><a href="#" onclick="toggleCategory('infrastructure-issues')">Infrastructure Issues</a>
+          <ul id="infrastructure-issues" style="display: none;">
+            <li><a href="#" id="collapsing-bridge" onclick="showIntensity('collapsing-bridge')">Collapsing Bridges</a></li>
+            <li><a href="#" id="collapsing-building" onclick="showIntensity('collapsing-building')">Collapsing Buildings</a></li>
+            <li><a href="#" id="collapsed-road" onclick="showIntensity('collapsed-road')">Collapsed Roads</a></li>
+            <li><a href="#" id="gas-leak" onclick="showIntensity('gas-leak')">Gas Leak</a></li>
+            <li><a href="#" id="fire" onclick="showIntensity('fire')">Fire</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="graphing.html" id="stats-link">Graphing</a></li>
+  </ul>
+</div>
+<div id="map">
+
+</div>
+<div>
+    <canvas id="myChart"></canvas>
+</div>
+  
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+ <script src="requests.js"></script>
+  
+<script>
+    const ctx = document.getElementById('myChart');
+    async function initGraph() {
+    var labels = await getRequest("http://ciygqqnpfv.a.pinggy.link/getdisasters/", {});
+    console.log(labels);
+    new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: labels,
+      datasets: [{
+        label: '# of Votes',
+        data: [12, 19, 3, 5, 2, 3],
+        borderWidth: 1,
+        borderColor: [
+            'rgb(185, 242, 155)'
+        ],
+        hoverOffset: 4,
+        tension: 0.1,
+        borderWidth: 8
+      }]
+    },
+    /*options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }*/
+  });
+}
+initGraph();
+
+</script>
+<!-- <footer>
+  <div class="footer-content">
+    <p>© 2025 DisTrack, The Future of Disaster Reporting.</p>
+  </div>
+</footer>-->
+
+</body>
+</html>
+
+
+
