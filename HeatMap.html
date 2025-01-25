@@ -3,13 +3,17 @@
   </div>
   
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  
+  <script src="requests.js"></script>
+
   <script>
     const ctx = document.getElementById('myChart');
+    async function initGraph() {
+    var labels = await getRequest("http://ciygqqnpfv.a.pinggy.link/getdisasters/", {});
+    console.log(labels);
     new Chart(ctx, {
     type: 'radar',
     data: {
-      labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+      labels: labels,
       datasets: [{
         label: 'Region1',
         data: [12, 19, 3, 5, 2, 3],
@@ -48,4 +52,6 @@
       }
     }
   });
+}
+initGraph();
 </script>
