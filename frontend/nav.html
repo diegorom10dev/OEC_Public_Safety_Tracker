@@ -95,9 +95,76 @@
     }
 
     function submitIntensity(disaster, intensity) {
-      alert(`Thank you for reporting a ${disaster} with ${intensity} intensity.`);
+      let instructions = '';
+      if (disaster === 'fire') {
+          if (intensity === 'Low') {
+              instructions = "Put it out using a fire extinguisher or water if safe to do so.";
+          } else if (intensity === 'Medium') {
+              instructions = "Evacuate the building and call the fire department.";
+          } else if (intensity === 'High') {
+              instructions = "Evacuate immediately, move to an open area, and call emergency services.";
+          }
+      } else if (disaster === 'earthquake') {
+          if (intensity === 'Low') {
+              instructions = "Take cover under a sturdy table and wait for the shaking to stop.";
+          } else if (intensity === 'Medium') {
+              instructions = "Move to an open area away from buildings and power lines.";
+          } else if (intensity === 'High') {
+              instructions = "Evacuate the area immediately and head to an open space or designated shelter.";
+          }
+      } else if (disaster === 'flood') {
+          if (intensity === 'Low') {
+              instructions = "Move valuables to higher ground and stay inside.";
+          } else if (intensity === 'Medium') {
+              instructions = "Evacuate if water levels are rising and head to a higher floor.";
+          } else if (intensity === 'High') {
+              instructions = "Evacuate immediately and move to an emergency shelter or evacuation center.";
+          }
+      } else if (disaster === 'tornado') {
+          if (intensity === 'Low') {
+              instructions = "Seek shelter inside a strong building, away from windows.";
+          } else if (intensity === 'Medium') {
+              instructions = "Move to a basement or an interior room on the lowest floor.";
+          } else if (intensity === 'High') {
+              instructions = "Find shelter immediately, preferably underground, and stay there until it is safe.";
+          }
+      } else if (disaster === 'collapsing-bridge') {
+          if (intensity === 'Low') {
+              instructions = "Stay clear of the bridge, and avoid crossing it until further notice.";
+          } else if (intensity === 'Medium') {
+              instructions = "Avoid the area around the bridge and take alternate routes.";
+          } else if (intensity === 'High') {
+              instructions = "Evacuate the area around the bridge immediately and stay at a safe distance.";
+          }
+      } else if (disaster === 'collapsing-building') {
+          if (intensity === 'Low') {
+              instructions = "Stay away from the building, but do not panic.";
+          } else if (intensity === 'Medium') {
+              instructions = "Evacuate the building immediately if you are inside or near it.";
+          } else if (intensity === 'High') {
+              instructions = "Evacuate the area and move far away from the building. Call emergency services.";
+          }
+      } else if (disaster === 'collapsed-road') {
+          if (intensity === 'Low') {
+              instructions = "Use alternate routes and avoid driving near the collapsed area.";
+          } else if (intensity === 'Medium') {
+              instructions = "Stay away from the collapsed road section and inform local authorities.";
+          } else if (intensity === 'High') {
+              instructions = "Do not attempt to cross or drive over collapsed roads. Seek alternative routes and avoid the area.";
+          }
+      } else if (disaster === 'gas-leak') {
+          if (intensity === 'Low') {
+              instructions = "Turn off all gas appliances, but do not use open flames.";
+          } else if (intensity === 'Medium') {
+              instructions = "Evacuate the building and call the gas company for assistance.";
+          } else if (intensity === 'High') {
+              instructions = "Evacuate the area immediately, avoid electrical switches, and call emergency services.";
+          }
+      }
+      alert(`Thank you for reporting a ${disaster} with ${intensity} intensity. \n\nInstructions: ${instructions}`);
       document.querySelector(`#${disaster}-intensity`).style.display = "none";
-    }
+  }
+  
   </script>
 </head>
 <body>
