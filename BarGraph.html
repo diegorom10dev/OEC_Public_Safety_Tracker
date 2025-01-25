@@ -3,32 +3,37 @@
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script src="C:\Users\PC Inspection\Desktop\OEC_Public_Safety_Tracker\getData.js"></script>
-<script src="C:\Users\PC Inspection\Desktop\OEC_Public_Safety_Tracker\getIDs.js"></script>
+<script src="requests.js"></script>
 
 <script>
   const ctx = document.getElementById('myChart');
 
-  new Chart(ctx, {
-    type: 'bar',
-    data: {
-      labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-      datasets: [{
-        label: '# of Votes',
-        data: [12, 19, 3, 5, 2, 3],
-        borderWidth: 1
-      }]
-    },
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true
+  async function initGraph() {
+    var labels = await getRequest("http://ciygqqnpfv.a.pinggy.link/getdisasters/", {});
+    console.log(labels);
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: labels,
+        datasets: [{
+          label: '# of Votes',
+          data: [12, 19, 3, 5, 2, 3],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
         }
       }
-    }
-  });
-  getIDs();
-  getData();
+    });
+  }
+  initGraph();
+
+  
+
 
 </script>
 
