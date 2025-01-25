@@ -29,7 +29,7 @@ app.get("/getdisasters/", function (req, res) {
     for (var i = 0; i < disasterids.length; i++) {
         output.push(disasterids[i]["disasterid"]);
     }
-    
+    console.log(output);
     res.write(JSON.stringify(output));
     res.send();
 });
