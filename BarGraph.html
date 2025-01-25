@@ -7,7 +7,7 @@
 
 <script>
   const ctx = document.getElementById('myChart');
-
+  
   async function initGraph() {
     var labels = await getRequest("http://ciygqqnpfv.a.pinggy.link/getdisasters/", {});
     console.log(labels);
@@ -29,8 +29,12 @@
         }
       }
     });
+    
   }
+
   initGraph();
+ 
+  
 
   
 

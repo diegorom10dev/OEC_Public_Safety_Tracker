@@ -17,7 +17,7 @@ async function getRequest (url, data) {
         //Onload event listener to receive the server's response
         xhr.onload = () => {
             if (xhr.readyState == 4 && xhr.status == 200) {
-            resolve(data);
+            resolve(xhr.response);
         } else {
             reject(xhr.status);
         }
